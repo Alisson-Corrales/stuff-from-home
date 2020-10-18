@@ -1,0 +1,307 @@
+:root{
+    --color-base: hsl(49, 66%, 83%);
+    --color-text: black;
+    --border: 4px solid var(--color-text);
+}
+*, *::after, *::before{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+body{
+    background-color: var(--color-base);
+    color: var(--color-text);
+    font-family: 'Yannone Kaffeesatz', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1;
+}
+
+
+/*Generic Styles*/
+.wrapper{
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    margin: 0 auto;
+    max-width: 85rem;
+
+    grid-template-areas: 
+    "header header header"
+    "parts parts parts"
+    "slogan mercs potions"
+    "books books masks"
+    "footer footer footer";
+    /*names were changes from the og but the comment still has the OG name*/
+}
+
+ul, ol{
+    list-style: none;
+}
+.title{
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.price{
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+ul li{
+    margin-bottom: 25px;
+}
+span.title{
+    font-size: 1.2rem;
+}
+
+
+
+/*Specific Styles*/
+
+/* Header Styles*/
+.header{
+    align-items: baseline;
+    border-bottom: var(--border);
+    display: flex;
+    flex-direction: row;
+    grid-area: header;
+    grid-column: 1 / -1;
+    justify-content: center;
+    padding: 1rem;
+}
+.header .header-logo{
+    order: 2;
+}
+.header .header-name{
+    order: 1;
+    margin-right: auto;
+    text-transform: uppercase;
+}
+.header .header-address{
+    order: 3;
+    margin-left: auto;
+}
+.header .header-no{
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-left: 1rem;
+    order: 4;
+}
+
+/*Starter styles*/
+.parts{
+    border-bottom: var(--border);
+    display: grid;
+    grid-area: parts;
+    grid-column: 1 / -1;
+    grid-template-columns: repeat(7, 1fr);
+}
+.parts header{
+    display: none;
+}
+.parts article+article{
+    border-left: var(--border);
+}
+.parts article{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 2rem 1rem;
+}
+.parts .description{
+    margin-top: 1rem;
+    flex-grow: 1;
+    margin-bottom: 1rem;
+}
+
+
+/*Slogan Styles*/
+.slogan{
+    align-items: center;
+    border-bottom: var(--border);
+    display: flex;
+    grid-column: 1 / 2;
+    grid-area: slogan;
+    justify-content: space-between;
+    padding: 1rem;
+}
+.slogan p{
+    font-size: 2.5rem;
+    font-family: fantasy;
+    margin: auto 0;
+}
+
+/*Mains Styles*/
+.mercs{
+    border-bottom: var(--border);
+    border-left: var(--border);
+    grid-area: potions;
+    grid-column: 2 / -2;
+    padding: 2rem 1rem;
+}
+.mercss header{
+    display: none;
+}
+.mercs article{
+    align-items: center;
+    display: flex;
+}
+.mercs .description{
+    flex-grow: 1;
+    line-height: 1.1rem;
+    margin-left: 2rem;
+    margin-right: 1rem;
+    min-height: 3rem;
+    overflow: hidden;
+    text-transform: uppercase;
+    text-align: center;
+}
+.mercs .price{
+    font-size: 2rem;
+}
+.mercs .title{
+    font-size: 2rem;
+    flex-shrink: 0;
+}
+.mercs .description::after{
+    border-bottom: 2px dotted var(--color-text);
+    bottom: 0.5rem;
+    content: "";
+    display: inline-block;
+    height: 2px;
+    right: 0;
+    width: 100%;
+}
+.mercs .description span{
+    background-color: var(--color-base);
+    padding-right: .5rem;
+    z-index: 1;
+}
+
+
+/*Soup Styles*/
+.potions{
+    border-bottom: var(--border);
+    border-left: var(--border);
+    grid-area: potions;
+    grid-column: -2 / -1;
+    padding: 2rem 1rem;
+    text-align: center;
+}
+.potions header{
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
+.potions ul li{
+    display: flex;
+    justify-content: space-between;
+}
+.potions li:after{
+    border-bottom: 2px dotted var(--color-text);
+    bottom: 3px;
+    content: "";
+    display: inline-block;
+    height: 2px;
+    left: 0;
+    width: 100%;
+    position: absolute;
+}
+.potions li span{
+    background-color: var(--color-base);
+    padding-right: 0.5rem;
+    z-index: 1;
+}
+.potions li span:last-child{
+    padding-left: .5rem;
+    padding-right: 0;
+}
+.potions article{
+    margin-top: 2rem;
+}
+.potions .title{
+    margin-bottom: 1rem;
+}
+
+/*Charcuterie styles*/
+.books{
+    border-bottom: var(--border);
+    grid-area: books;
+    grid-column: 1 / 5;
+    padding: 1rem;
+}
+.books header{
+    display: flex;
+}
+.books .heading{
+    font-size: 2rem;
+    text-transform: uppercase;
+}
+.books header p{
+    margin-left: 1rem;
+}
+.books article{
+    margin-top: 1rem;
+}
+.books article header{
+    display: flex;
+    justify-content: space-between;
+}
+.books .title{
+    background-color: var(--color-base);
+    padding-right: 0.5rem;
+    z-index: 1;
+}
+.books .price{
+    background-color: var(--color-base);
+    padding-left: 0.5rem;
+    z-index: 1;
+}
+.books article header::after{
+    border-bottom: 2px dotted var(--color-text);
+    bottom: 5px;
+    content: "";
+    display: inline-block;
+    height: 2px;
+    left: 0;
+    position: absolute;
+    width: 100%;
+}
+
+/*Sides Style*/
+.masks{
+    border-bottom: var(--border);
+    border-left: var(--border);
+    grid-area: masks;
+    grid-column: 5/ -1;
+    padding: 1rem;
+}
+.masks .heading{
+    font-size: 2rem;
+    text-transform: uppercase;
+}
+.masks ul{
+    columns: 2;
+    margin-top: 1rem;
+}
+.masks .title{
+    margin-right: 1rem;
+}
+
+
+/*Footer Styles*/
+.footer{
+    display: flex;
+    justify-content: space-between;
+    grid-area: footer;
+    grid-column: 1 / -1;
+    padding: 1rem
+}
+.footer .bar{
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
